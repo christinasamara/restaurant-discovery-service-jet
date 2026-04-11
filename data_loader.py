@@ -22,7 +22,10 @@ def load_data(postcode="EC4M7RF"):
                 "name": res.get('name'),
                 "cuisines": ", ".join(cuisine_list),
                 "rating": res.get('rating', {}).get('starRating'),
-                "address": full_address
+                # get also count else get 0
+                "rating_count": res.get('rating', {}).get('count', 0),
+                "address": full_address,
+                "logo_url": res.get('logoUrl')
             })
 
         return restaurants

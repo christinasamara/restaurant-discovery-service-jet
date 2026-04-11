@@ -60,6 +60,11 @@
             border-radius: 12px;
             padding: 15px;
         }
+
+        .rating-gold {
+            color: #dfbb38;
+            font-weight: 500;
+        }
     </style>
 </head>
 
@@ -89,7 +94,7 @@
                         <div class="dropdown">
                             <button class="btn button-filter w-100 dropdown-toggle text-start " type="button"
                                 data-bs-toggle="dropdown">
-                                🍕 Filters
+                                📋 Filters
                             </button>
                             <ul class="dropdown-menu p-3 shadow border-2" id="cuisineMenu"
                                 style="border-color: black; min-width: 250px; max-height: 400px; overflow-y: auto;">
@@ -154,9 +159,22 @@
             <div class="col-md-6 col-lg-4">
                 <div class="card h-100 shadow-sm">
                     <div class="card-body">
-                        <h5 class="card-title fw-bold">{{ res.name }}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">{{ res.cuisines }}</h6>
-                        <p class="text-warning mb-2">⭐ {{ res.rating }}</p>
+                        <div class="d-flex align-items-center mb-3">
+                            {% if res.logo_url %}
+                            <img src="{{ res.logo_url }}" alt="{{ res.name }} logo" class="rounded-circle border me-3"
+                                style="width: 60px; height: 60px; object-fit: cover; border-color: #ff8000 !important;">
+                            {% endif %}
+
+                            <div>
+                                <h5 class="card-title fw-bold mb-0">{{ res.name }}</h5>
+                                <p>
+                                    <span class="rating-gold">⭐ {{ res.rating }}</span>
+                                    <span class="text-muted small">({{ res.rating_count }})</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <h6 class="card-subtitle mb-2 text-muted small">{{ res.cuisines }}</h6>
                         <p class="card-text small text-secondary">{{ res.address }}</p>
                     </div>
                 </div>
