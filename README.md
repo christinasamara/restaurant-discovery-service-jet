@@ -25,10 +25,20 @@ Open your browser and navigate to http://127.0.0.1:5000
 * 
 * Jinja2 Templates: Used to dynamically render restaurant cards and handle conditional logic for empty search states or error messages.
 
+### Assumptions and Decisions
+* Data Scope: The API includes cafes and grocery stores alongside traditional restaurants. I assumed the user wants to see all available food options for their postcode, so I did not filter these out.
+* Cuisine Data & Filters: The API includes "Deals," "Promotions," and "Stamps" within the cuisine array. I included these alongside actual food/cuisine types so that users could use the filter system to find special offers as well as specific cuisines.
+* Information: The API returns a large amount of data, but I focused strictly on the four points required by the brief: Name, Cuisines, Rating, and Address. I added the "Review Count" and the "Logo" to provide more context for the user.
+
 ### Functionality
 * Postcode Search: Users can enter a UK postcode to see a list of local dining options.
 * Data Focus: The interface limits the display to the first 10 restaurants returned.
 * Filtering: Users can filter results by specific tags like "Deals," "Rating," or specific cuisines.
 * Sorting: The interface allows users to sort restaurants by their star rating or the volume of reviews.
 * Informative Cards: Each card displays the restaurant's logo, name, cuisine types, numeric rating with review count, and full address.
+
+### Future Improvements
+* Category Filtering: Adding the ability to filter specifically by "Restaurant," "Cafe," or "Grocery" to give the user more control over the results.
+* Pagination: Implementing "Load More" functionality to allow users to see more than the initial 10 restaurants.
+* Map Integration: Using the coordinates from the API to show restaurant locations on a map.
 
