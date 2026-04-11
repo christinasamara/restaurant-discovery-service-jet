@@ -28,60 +28,118 @@
             border-radius: 10px;
             border: 2px solid black;
         }
+
+        .card {
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: #ff8000;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        .button-filter {
+            height: 48px;
+            border: 2px solid #ff8000 !important;
+            border-radius: 12px !important;
+            background-color: white !important;
+            font-weight: bold;
+            color: black !important;
+        }
+
+        .btn-check:checked+.button-filter {
+            background-color: #ff8000 !important;
+            color: white !important;
+        }
+
+        .dropdown-menu {
+            border: 2px solid #ff8000;
+            border-radius: 12px;
+            padding: 15px;
+        }
     </style>
 </head>
 
 <body>
     <div class="container py-5">
-
         <div class="text-center mb-5">
             <h1 class="display-3 fw-bold">Restaurant Finder</h1>
             <p class="text-muted">Find the best local restaurants</p>
         </div>
 
-        <div class="d-flex justify-content-center mb-5">
-            <div class="divider"></div>
-        </div>
+        <form action="/" method="get">
 
-        <div class="row justify-content-center mb-5">
-            <div class="col-md-6">
-                <form action="/" method="get" class="input-group input-group-lg shadow-sm">
-                    <input type="text" name="postcode" class="form-control border-2"
-                        placeholder="Enter Postcode (e.g. EC4M7RF)" value="{{ postcode }}"
-                        style="border-color: #ff8000;">
-                    <button type="submit" class="btn btn-primary px-4 fw-bold">Search</button>
-                </form>
+            <div class="row justify-content-center mb-5">
+                <div class="col-md-6">
+                    <div class="input-group input-group-lg shadow-sm">
+                        <input type="text" name="postcode" class="form-control border-2"
+                            placeholder="Enter Postcode (e.g. EC4M7RF)" value="{{ postcode }}"
+                            style="border-color: #ff8000;">
+                        <button type="submit" class="btn btn-primary px-4 fw-bold">Search</button>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <div class="row justify-content-center mt-3 g-2">
-            <div class="col-md-3">
-                <input type="text" name="search" class="form-control form-control-sm border-2"
-                    placeholder="Filter by name/cuisine..." value="{{ request.args.get('search', '') }}"
-                    style="border-color: black;">
-            </div>
-            <div class="col-md-2">
-                <select name="min_rating" class="form-select form-select-sm border-2" style="border-color: black;">
-                    <option value="">Min Rating</option>
-                    {% for i in range(1, 6) %}
-                    <option value="{{ i }}" {{ 'selected' if request.args.get('min_rating')==i|string }}>{{ i }}+ Stars
-                    </option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="col-md-3">
-                <select name="sort" class="form-select form-select-sm border-2" style="border-color: black;">
-                    <option value="">Sort By...</option>
-                    <option value="rating_desc" {{ 'selected' if request.args.get('sort')=='rating_desc' }}>Highest
-                        Rating</option>
-                    <option value="name_asc" {{ 'selected' if request.args.get('sort')=='name_asc' }}>Name (A-Z)
-                    </option>
-                    <option value="time_asc" {{ 'selected' if request.args.get('sort')=='time_asc' }}>Fastest Delivery
-                    </option>
-                </select>
-            </div>
-        </div>
+            <div class="filter-container mt-3 mb-5">
+                <div class="row justify-content-center align-items-center g-3">
+                    <div class="col-md-4">
+                        <div class="dropdown">
+                            <button class="btn button-filter w-100 dropdown-toggle text-start " type="button"
+                                data-bs-toggle="dropdown">
+                                🍕 Filters
+                            </button>
+                            <ul class="dropdown-menu p-3 shadow border-2" id="cuisineMenu"
+                                style="border-color: black; min-width: 250px; max-height: 400px; overflow-y: auto;">
+                                <h6 class="dropdown-header px-0">Filter by Tags & Cuisines</h6>
 
+                                {% for option in filter_options %}
+                                <li class="mb-1">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="search"
+                                            value="{{ option.lower() }}" id="tag-{{ loop.index }}" {% if option.lower()
+                                            in request.args.getlist('search') %}checked{% endif %}>
+                                        <label class="form-check-label fw-bold" for="tag-{{ loop.index }}">
+                                            {{ option }}
+                                        </label>
+                                    </div>
+                                </li>
+                                {% endfor %}
+
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li>
+                                    <button type="submit" class="btn btn-primary btn-sm w-100 fw-bold">Apply
+                                        Filters</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 text-center">
+                        <input type="checkbox" name="min_rating" value="4.5" class="btn-check" id="rating-toggle" {% if
+                            request.args.get('min_rating')=='4.5' %}checked{% endif %} onchange="this.form.submit()">
+                        <label class="btn button-filter w-100 d-flex align-items-center justify-content-center" for="rating-toggle"
+                            style="height: 45px; line-height: 30px;">
+                            ⭐ 4.5+ Rating
+                        </label>
+                    </div>
+
+                    <div class="col-md-3">
+                        <select name="sort" class="form-select button-filter" style="border-color: black; height: 45px;"
+                            onchange="this.form.submit()">
+                            <option value="">Sort By...</option>
+                            <option value="rating_desc" {{ 'selected' if request.args.get('sort')=='rating_desc' }}>
+                                Highest Rating</option>
+                            <option value="name_asc" {{ 'selected' if request.args.get('sort')=='name_asc' }}>Name (A-Z)
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </form>
         <div class="row g-4">
             {% for res in restaurants %}
             <div class="col-md-6 col-lg-4">
@@ -97,6 +155,7 @@
             {% endfor %}
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
