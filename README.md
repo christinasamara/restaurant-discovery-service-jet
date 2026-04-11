@@ -29,6 +29,7 @@ Open your browser and navigate to http://127.0.0.1:5000
 * Data Scope: The API includes cafes and grocery stores alongside traditional restaurants. I assumed the user wants to see all available food options for their postcode, so I did not filter these out.
 * Cuisine Data & Filters: The API includes "Deals," "Promotions," and "Stamps" within the cuisine array. I included these alongside actual food/cuisine types so that users could use the filter system to find special offers as well as specific cuisines.
 * Information: The API returns a large amount of data, but I focused strictly on the four points required by the brief: Name, Cuisines, Rating, and Address. I added the "Review Count" and the "Logo" to provide more context for the user.
+* State Management: Implemented a welcome screen for visitors and clear "No Results" messaging for empty searches.
 
 ### Functionality
 * Postcode Search: Users can enter a UK postcode to see a list of local dining options.
@@ -42,3 +43,12 @@ Open your browser and navigate to http://127.0.0.1:5000
 * Pagination: Implementing "Load More" functionality to allow users to see more than the initial 10 restaurants.
 * Map Integration: Using the coordinates from the API to show restaurant locations on a map.
 
+### Screenshots
+# Start Page
+![alt text](image.png)
+
+# Results for postcode SW1A 1AA 
+![alt text](image-1.png)
+
+# Filtering by American & Asian, with 4.5+ rating
+![alt text](image-2.png)
