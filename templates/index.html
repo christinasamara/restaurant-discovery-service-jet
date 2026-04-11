@@ -65,6 +65,33 @@
             color: #dfbb38;
             font-weight: 500;
         }
+
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .title-section {
+            min-height: 44px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .cuisine-section {
+            margin-top: 10px;
+            flex-grow: 1;
+        }
+
+
+        .rating-section {
+            margin-bottom: 4px;
+        }
+
+        .address-section {
+            border-bottom: 1px solid #ff8000;
+            margin-bottom: 3px;
+        }
     </style>
 </head>
 
@@ -140,6 +167,8 @@
                                 Highest Rating</option>
                             <option value="name_asc" {{ 'selected' if request.args.get('sort')=='name_asc' }}>Name (A-Z)
                             </option>
+                            <option value="review_desc" {{ 'selected' if request.args.get('sort')=='review_desc' }}>Most
+                                Reviews</option>
                         </select>
                     </div>
                 </div>
@@ -159,23 +188,36 @@
             <div class="col-md-6 col-lg-4">
                 <div class="card h-100 shadow-sm">
                     <div class="card-body">
-                        <div class="d-flex align-items-center mb-3">
-                            {% if res.logo_url %}
-                            <img src="{{ res.logo_url }}" alt="{{ res.name }} logo" class="rounded-circle border me-3"
-                                style="width: 60px; height: 60px; object-fit: cover; border-color: #ff8000 !important;">
-                            {% endif %}
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                {% if res.logo_url %}
+                                <img src="{{ res.logo_url }}" alt="{{ res.name }} logo"
+                                    class="rounded-circle border me-3"
+                                    style="width: 60px; height: 60px; object-fit: cover; border-color: #ff8000 !important;">
+                                {% endif %}
 
-                            <div>
-                                <h5 class="card-title fw-bold mb-0">{{ res.name }}</h5>
-                                <p>
-                                    <span class="rating-gold">⭐ {{ res.rating }}</span>
-                                    <span class="text-muted small">({{ res.rating_count }})</span>
+                                <div>
+                                    <h5 class="title-section fw-bold mb-0">{{ res.name }}</h5>
+                                    <p class="rating-section mb-0">
+                                        <span class="rating-gold">⭐ {{ res.rating }}</span>
+                                        <span class="text-muted small">({{ res.rating_count }})</span>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="cuisine-section">
+                                <h6 class="card-subtitle mb-2 text-muted small">{{ res.cuisines }}</h6>
+                            </div>
+
+                            <div class="address-section">
+                                <p class="card-text small text-secondary mb-0 d-flex align-items-center">
+                                    <img width="18" height="18"
+                                        src="https://img.icons8.com/deco-glyph/48/FD7E14/map-marker.png"
+                                        alt="map-marker" class="me-1" />
+                                    {{ res.address }}
                                 </p>
                             </div>
                         </div>
-
-                        <h6 class="card-subtitle mb-2 text-muted small">{{ res.cuisines }}</h6>
-                        <p class="card-text small text-secondary">{{ res.address }}</p>
                     </div>
                 </div>
             </div>

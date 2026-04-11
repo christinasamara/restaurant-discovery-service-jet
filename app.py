@@ -34,6 +34,8 @@ def index():
         restaurants = sorted(restaurants, key=lambda x: x.get('rating') or 0, reverse=True)
     elif sort_by == 'name_asc':
         restaurants = sorted(restaurants, key=lambda x: x.get('name', '').lower())
+    elif sort_by == 'review_desc':
+        restaurants = sorted(restaurants, key=lambda x: x.get('rating_count', 0), reverse=True)
 
     return render_template('index.html', restaurants=restaurants, postcode=postcode, filter_options=filter_options)
 
