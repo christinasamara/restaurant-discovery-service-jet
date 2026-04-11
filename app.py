@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    postcode = request.args.get('postcode', 'L40TH').strip()
+    postcode = request.args.get('postcode', '').strip()
     sort_by = request.args.get('sort', '')
     min_rating = request.args.get('min_rating', type=float)
     selected_tags = request.args.getlist('search')
