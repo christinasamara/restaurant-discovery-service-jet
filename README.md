@@ -44,11 +44,14 @@ Open your browser and navigate to http://127.0.0.1:5000
 * Map Integration: Using the coordinates from the API to show restaurant locations on a map.
 
 ### Screenshots
-# Start Page
+### Start Page
 ![alt text](image.png)
 
-# Results for postcode SW1A 1AA 
+### Results for postcode SW1A 1AA 
 ![alt text](image-1.png)
 
-# Filtering by American & Asian, with 4.5+ rating
+### Filtering by American & Asian, with 4.5+ rating
 ![alt text](image-2.png)
+
+### Empty Search
+![alt text](image-3.png)
