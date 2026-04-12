@@ -22,7 +22,6 @@ Open your browser and navigate to http://127.0.0.1:5000
 ### Technologies Used
 * Python & Flask: Chosen as the backend framework for its speed, simplicity and API handling.
 * Bootstrap 5: Used for the frontend grid system to ensure the interface is responsive across mobile and desktop devices.
-* 
 * Jinja2 Templates: Used to dynamically render restaurant cards and handle conditional logic for empty search states or error messages.
 
 ### Assumptions and Decisions
@@ -39,9 +38,12 @@ Open your browser and navigate to http://127.0.0.1:5000
 * Informative Cards: Each card displays the restaurant's logo, name, cuisine types, numeric rating with review count, and full address.
 
 ### Future Improvements
-* Category Filtering: Adding the ability to filter specifically by "Restaurant," "Cafe," or "Grocery" to give the user more control over the results.
-* Pagination: Implementing "Load More" functionality to allow users to see more than the initial 10 restaurants.
-* Map Integration: Using the coordinates from the API to show restaurant locations on a map.
+* Dedicated Restaurant Pages: A "View Details" page for every restaurant. This would give users space to see more info that does not fit on the main summary card.
+* Delivery Logistics: Using the restaurant's coordinates and delivery data to show.
+* Reversible Sorting Options: Adding "lowest to highest" options for all sorting categories.
+* Better Category Filtering: Filter different categories like restaurant, cafe, and grocery store
+* Cleaning up Cuisines and Promotions: Separate actual food types like Italian or Thai from promotional tags like "Deals" or "Stamps."
+* Pagination: Adding a "Load More" button or infinite scroll to let users explore more than the initial 10 results.
 
 ### Screenshots
 ### Start Page
