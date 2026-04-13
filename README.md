@@ -38,7 +38,7 @@ Open your browser and navigate to http://127.0.0.1:5000
 * Informative Cards: Each card displays the restaurant's logo, name, cuisine types, numeric rating with review count, and full address.
 
 ### Future Improvements
-* Dedicated Restaurant Pages: A "View Details" page for every restaurant. This would give users space to see more info that does not fit on the main summary card.
+* Dedicated Restaurant Pages: A "View Details" page for every restaurant. This would give users space to see more info that does not fit on the main summary card. Maybe also options for seeing the menu, booking a table or ordering delivery & takeaway.
 * Delivery Logistics: Using the restaurant's coordinates and delivery data to show.
 * Reversible Sorting Options: Adding "lowest to highest" options for all sorting categories.
 * Better Category Filtering: Filter different categories like restaurant, cafe, and grocery store
@@ -57,15 +57,3 @@ Open your browser and navigate to http://127.0.0.1:5000
 
 ### Empty Search
 ![alt text](image-4.png)
-
-### Unit Testing and Quality Assurance
-To ensure the application is robust and handles various user scenarios, I implemented some unit tests using Python’s unittest framework. These tests simulate user interactions and verify that the application logic handles both successful data retrieval and potential errors from the Just Eat Discovery API.
-
-* Home Page Accessibility: Verifies that the main landing page loads correctly with a 200 OK status and contains the correct branding elements. 
-* Search Logic Execution: Confirms that the application can process a postcode query and navigate the search results logic without crashing. 
-* Error Handling: Specifically tests how the application reacts to invalid postcodes or 404 responses from the Just Eat API, ensuring the app stays live and displays a user-friendly message.
-* State Integrity: Ensures that if no postcode is provided, the application correctly maintains the "How to search" welcome state instead of showing empty result sets.
-
-#### How to run the tests:
-python test_app.py
-You should see a message indicating all tests passed (OK). Note that if the upstream API returns a 404 during testing, the application is designed to handle this gracefully with user messages.
