@@ -38,7 +38,7 @@ Open your browser and navigate to http://127.0.0.1:5000
 * Informative Cards: Each card displays the restaurant's logo, name, cuisine types, numeric rating with review count, and full address.
 
 ### Future Improvements
-* Dedicated Restaurant Pages: A "View Details" page for every restaurant. This would give users space to see more info that does not fit on the main summary card.
+* Dedicated Restaurant Pages: A "View Details" page for every restaurant. This would give users space to see more info that does not fit on the main summary card. Maybe also options for seeing the menu, booking a table or ordering delivery & takeaway.
 * Delivery Logistics: Using the restaurant's coordinates and delivery data to show.
 * Reversible Sorting Options: Adding "lowest to highest" options for all sorting categories.
 * Better Category Filtering: Filter different categories like restaurant, cafe, and grocery store
