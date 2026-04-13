@@ -6,6 +6,7 @@
     <title>Restaurant Finder</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="icon" href="https://fav.farm/🍴" />
     <style>
         h1 {
@@ -13,13 +14,38 @@
             color: #ff8000;
         }
 
-        .btn-primary {
-            background-color: #ff8000 !important;
-            border-color: #ff8000 !important;
+        .subtitle {
+            color: #fecc8f;
+            letter-spacing: 1px;
+        }
+
+        .bg-company-dark {
+            background-color: #2D2D2D;
+            border-radius: 20px;
+        }
+
+        .btn-primary,
+        .btn-primary:hover,
+        .btn-primary:active,
+        .btn-primary:focus {
+            background-color: #ff8000;
+            border-color: #ff8000;
+        }
+
+        .btn-primary:active,
+        .btn-primary:focus {
+            filter: brightness(90%);
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            padding: 5px;
         }
 
         body {
-            background-color: #f7efc6
+            background-color: #fecc8f
         }
 
         .divider {
@@ -38,12 +64,12 @@
         .card:hover {
             transform: translateY(-10px);
             border-color: #ff8000;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
         }
 
         .button-filter {
             height: 48px;
-            border: 2px solid #ff8000 !important;
+            border: 2px solid #ff8000;
             border-radius: 12px !important;
             background-color: white !important;
             font-weight: bold;
@@ -96,10 +122,23 @@
 
 <body>
     <div class="container py-5">
-        <div class="text-center mb-5">
-            <h1 class="display-3 fw-bold">🍴 Restaurant Finder</h1>
-            <p class="text-muted">Find the best local restaurants</p>
-        </div>
+        <nav class="navbar navbar-expand-lg pt-4 pb-4 mb-5 shadow bg-company-dark">
+            <div class="container d-flex justify-content-center align-items-center">
+
+                <div class="text-center">
+                    <div class="d-flex align-items-center justify-content-center mb-1">
+                        <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo">
+
+                        <h1 class="fw-bold mb-0">RESTAURANT FINDER</h1>
+                    </div>
+
+                    <p class="mb-0 small fw-bold text-uppercase subtitle">
+                        Craving something amazing? Start Here!
+                    </p>
+                </div>
+
+            </div>
+        </nav>
 
         <form action="/" method="get">
 
@@ -234,6 +273,30 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <footer class="text-center text-white py-4 mt-5 bg-company-dark">
+        <div class="container-fluid px-5">
+
+            <div class="d-flex align-items-center justify-content-center mb-3">
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo">
+                <h1 class="h4 fw-bold mb-0" style="color: #ff8000;">RESTAURANT FINDER</h1>
+            </div>
+
+            <p class="mb-0 small fw-bold text-uppercase subtitle">Follow us</p>
+
+            <div class="d-flex justify-content-center gap-4 mb-4">
+                <a href="#"> <i class="fab fa-facebook-f" style="color:white"></i></a>
+                <a href="#"> <i class="fab fa-instagram" style="color:white"></i></a>
+                <a href="#"><i class="fab fa-x" style="color:white"></i></a>
+                <a href="#"><i class="fab fa-youtube" style="color:white"></i> </a>
+            </div>
+
+            <p class="mb-0 small fw-bold" style="color: #ff8000;">
+                © 2026 Christina Eleanna Samara
+            </p>
+
+        </div>
+    </footer>
 </body>
 
 </html>
